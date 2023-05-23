@@ -1,5 +1,8 @@
+from entity.product import Product
+
+
 class Basket:
-    def __init__(self, products=[]):
+    def __init__(self, products=None):
         if products:
             self.__products = products
         else:
@@ -10,10 +13,13 @@ class Basket:
         return len(self.__products)
 
     def get_product(self, index):
-        return self.__products[index]
+        if (isinstance(index, int)
+                and index >= 0 and index < self.size):
+            return self.__products[index]
 
     def add(self, product):
-        self.__products.append(product)
+        if isinstance(product, Product):
+            self.__products.append(product)
 
     def __str__(self):
         msg = "List of products:"
