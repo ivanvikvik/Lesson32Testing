@@ -14,3 +14,5 @@ class ShopAssistance:
                     total += product.price
 
             return total
+        else:
+            return 0
